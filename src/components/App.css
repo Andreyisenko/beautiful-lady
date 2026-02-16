@@ -1,0 +1,283 @@
+/* Загальні налаштування */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #fdf6f9;
+}
+
+/* Основний блок */
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Літаючі сердечка */
+.hearts {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hearts span {
+  position: absolute;
+  bottom: -50px;
+  font-size: 24px;
+  opacity: 0.8;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Контейнер контенту */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 40px 40px 40px; /* резерв під кнопку */
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 1s ease;
+}
+
+.content.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: glowAppear 1.5s ease forwards;
+}
+
+@keyframes glowAppear {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 105, 180, 0);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
+  }
+  100% {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Заголовок */
+.content h1 {
+  font-size: 50px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ff7eb3, #ff4f8b, #ff3d7a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 8px #ff4f8b,
+    0 0 15px #ff3d7a;
+  margin-bottom: 20px;
+}
+
+/* Підзаголовок */
+.content p {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* Кнопка */
+.cta-button {
+  position: relative;
+  padding: 18px 50px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ff7eb3 0%, #ff3d7a 100%);
+  box-shadow:
+    0 10px 25px rgba(255, 61, 122, 0.6),
+    inset 0 4px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.8s ease; /* тільки opacity для появи */
+}
+
+/* Поява кнопки */
+.show-btn {
+  opacity: 1;
+}
+
+/* Перелив */
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.2)
+  );
+  transform: skewX(-25deg);
+  transition: all 0.75s;
+}
+
+.cta-button:hover::before {
+  left: 130%;
+}
+
+/* Ховер та актив */
+.cta-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 15px 35px rgba(255, 61, 122, 0.8),
+    inset 0 4px 8px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:active {
+  transform: scale(0.95);
+}
+
+/* Адаптивність */
+@media (max-width: 1024px) {
+  .content {
+    max-width: 600px;
+    padding: 30px 30px 90px;
+  }
+  .content h1 {
+    font-size: 42px;
+  }
+  .content p {
+    font-size: 20px;
+  }
+  .cta-button {
+    padding: 16px 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 90%;
+    padding: 20px 20px 90px;
+  }
+  .content h1 {
+    font-size: 32px;
+  }
+  .content p {
+    font-size: 18px;
+  }
+  .cta-button {
+    padding: 14px 30px;
+    font-size: 16px;
+  }
+  .hearts span {
+    font-size: 18px;
+  }
+}
+
+.cta-button {
+  position: relative;
+  padding: 18px 50px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ff7eb3 0%, #ff3d7a 100%);
+  box-shadow:
+    0 10px 25px rgba(255, 61, 122, 0.6),
+    inset 0 4px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(1); /* стартовий масштаб 1 */
+  transition:
+    opacity 0.8s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.show-btn {
+  opacity: 1;
+}
+
+/* Перелив */
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.2)
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+}
+
+.cta-button:hover::before {
+  left: 130%;
+}
+
+/* Плавний ховер */
+.cta-button:hover {
+  transform: scale(1.1) translateY(-3px); /* плавне збільшення + легке підняття */
+  box-shadow:
+    0 15px 35px rgba(255, 61, 122, 0.8),
+    inset 0 4px 8px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:active {
+  transform: scale(1); /* кнопка повертається до норми при натисканні */
+  box-shadow:
+    0 10px 25px rgba(255, 61, 122, 0.6),
+    inset 0 4px 8px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
