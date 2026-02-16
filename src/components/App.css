@@ -66,7 +66,7 @@ body {
   z-index: 2;
   text-align: center;
   max-width: 700px;
-  padding: 40px 40px 40px; /* резерв під кнопку */
+  padding: 40px;
   background: rgba(0, 0, 0, 0.35);
   border-radius: 25px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
@@ -121,122 +121,26 @@ body {
 /* Кнопка */
 .cta-button {
   position: relative;
-  padding: 18px 50px;
-  font-size: 20px;
-  font-weight: 700;
+  padding: 22px 65px;
+  font-size: 22px;
+  font-weight: 800;
   color: #fff;
   border: none;
-  border-radius: 60px;
+  border-radius: 75px;
   cursor: pointer;
   overflow: hidden;
-  background: linear-gradient(180deg, #ff7eb3 0%, #ff3d7a 100%);
+  background: linear-gradient(135deg, #ff7eb3 0%, #ff3d7a 100%);
   box-shadow:
-    0 10px 25px rgba(255, 61, 122, 0.6),
-    inset 0 4px 8px rgba(255, 255, 255, 0.4),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+    0 12px 30px rgba(255, 61, 122, 0.6),
+    inset 0 5px 12px rgba(255, 255, 255, 0.4),
+    inset 0 -5px 12px rgba(0, 0, 0, 0.2);
   opacity: 0;
-  transition: opacity 0.8s ease; /* тільки opacity для появи */
-}
-
-/* Поява кнопки */
-.show-btn {
-  opacity: 1;
-}
-
-/* Перелив */
-.cta-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.2)
-  );
-  transform: skewX(-25deg);
-  transition: all 0.75s;
-}
-
-.cta-button:hover::before {
-  left: 130%;
-}
-
-/* Ховер та актив */
-.cta-button:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow:
-    0 15px 35px rgba(255, 61, 122, 0.8),
-    inset 0 4px 8px rgba(255, 255, 255, 0.5),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.cta-button:active {
-  transform: scale(0.95);
-}
-
-/* Адаптивність */
-@media (max-width: 1024px) {
-  .content {
-    max-width: 600px;
-    padding: 30px 30px 90px;
-  }
-  .content h1 {
-    font-size: 42px;
-  }
-  .content p {
-    font-size: 20px;
-  }
-  .cta-button {
-    padding: 16px 40px;
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 768px) {
-  .content {
-    max-width: 90%;
-    padding: 20px 20px 90px;
-  }
-  .content h1 {
-    font-size: 32px;
-  }
-  .content p {
-    font-size: 18px;
-  }
-  .cta-button {
-    padding: 14px 30px;
-    font-size: 16px;
-  }
-  .hearts span {
-    font-size: 18px;
-  }
-}
-
-.cta-button {
-  position: relative;
-  padding: 18px 50px;
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  border: none;
-  border-radius: 60px;
-  cursor: pointer;
-  overflow: hidden;
-  background: linear-gradient(180deg, #ff7eb3 0%, #ff3d7a 100%);
-  box-shadow:
-    0 10px 25px rgba(255, 61, 122, 0.6),
-    inset 0 4px 8px rgba(255, 255, 255, 0.4),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: scale(1); /* стартовий масштаб 1 */
+  transform: scale(1);
   transition:
     opacity 0.8s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
 }
 
 .show-btn {
@@ -265,19 +169,58 @@ body {
   left: 130%;
 }
 
-/* Плавний ховер */
+/* Hover + glow */
 .cta-button:hover {
-  transform: scale(1.1) translateY(-3px); /* плавне збільшення + легке підняття */
+  transform: scale(1.15) translateY(-4px);
   box-shadow:
-    0 15px 35px rgba(255, 61, 122, 0.8),
-    inset 0 4px 8px rgba(255, 255, 255, 0.5),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+    0 20px 50px rgba(255, 61, 122, 0.9),
+    inset 0 6px 12px rgba(255, 255, 255, 0.5),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ff93c3 0%, #ff1f75 100%);
 }
 
 .cta-button:active {
-  transform: scale(1); /* кнопка повертається до норми при натисканні */
+  transform: scale(1.05);
   box-shadow:
-    0 10px 25px rgba(255, 61, 122, 0.6),
-    inset 0 4px 8px rgba(255, 255, 255, 0.4),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+    0 12px 30px rgba(255, 61, 122, 0.6),
+    inset 0 5px 12px rgba(255, 255, 255, 0.4),
+    inset 0 -5px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Адаптивність */
+@media (max-width: 1024px) {
+  .content {
+    max-width: 600px;
+    padding: 30px;
+  }
+  .content h1 {
+    font-size: 42px;
+  }
+  .content p {
+    font-size: 20px;
+  }
+  .cta-button {
+    padding: 18px 50px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 90%;
+    padding: 20px;
+  }
+  .content h1 {
+    font-size: 32px;
+  }
+  .content p {
+    font-size: 18px;
+  }
+  .cta-button {
+    padding: 16px 40px;
+    font-size: 18px;
+  }
+  .hearts span {
+    font-size: 18px;
+  }
 }
