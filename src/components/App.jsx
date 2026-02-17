@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   const clickBtn = () => {
-    const url = "https://zmgig.com/g/ldekoftkoxf1ac0a3401f9ee251f3f/";
+    const url = "https://fas.st/oe6ZU";
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
